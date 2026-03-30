@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>apploading.co — app builder, Cape Town</title>
+<meta name="description" content="Solo app builder based in Cape Town. Mobile, web, and data tools people actually use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090f;--sur:#0d1120;--sur2:#121828;
+  --bdr:#18202e;--bdr2:#202c40;
+  --txt:#b8cade;--mut:#3d5570;--dim:#1c2a3c;--bright:#e8f2fc;
+  --blue:#1e6bff;--bluemid:#1450b8;--blueglow:rgba(30,107,255,0.13);--bluebdr:rgba(30,107,255,0.25);
+  --teal:#00c896;--tealglow:rgba(0,200,150,0.1);--tealbdr:rgba(0,200,150,0.28);
+  --amber:#f0a500;--ambglow:rgba(240,165,0,0.07);--ambbdr:rgba(240,165,0,0.2);
+  --pro:#a78bfa;--proglow:rgba(167,139,250,0.1);--probdr:rgba(167,139,250,0.25);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid transparent;transition:all .3s}
+nav.on{background:rgba(7,9,15,.96);border-color:var(--bdr);backdrop-filter:blur(20px)}
+.brand{font-family:'Fira Code',monospace;font-size:13px;font-weight:500;color:var(--bright)}
+.brand b{color:var(--blue);font-weight:400}
+.brand em{font-style:normal;color:var(--mut)}
+.nr{display:flex;align-items:center;gap:32px}
+.nr a{font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.1em;transition:color .2s}
+.nr a:hover{color:var(--txt)}
+.nr .cta{color:var(--blue)!important;border:1px solid var(--bluebdr);padding:7px 16px}
+.nr .cta:hover{background:var(--blueglow)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bdr);overflow:hidden}
+.hl{padding:130px 48px 72px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2}
+.hr{position:relative;overflow:hidden;border-left:1px solid var(--bdr);background:var(--sur)}
+.hrbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(30,107,255,.07) 0%,transparent 70%)}
+.phones{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:52px 20px 32px}
+.ph{border-radius:28px;overflow:hidden;border:2px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.6);flex-shrink:0;position:absolute}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.ph1{width:185px;height:355px;left:50%;top:50%;transform:translate(-62%,-50%);z-index:3}
+.ph2{width:165px;height:315px;left:50%;top:50%;transform:translate(-8%,-45%) rotate(5deg);z-index:2;opacity:.8}
+.ph3{width:148px;height:285px;left:50%;top:50%;transform:translate(34%,-38%) rotate(10deg);z-index:1;opacity:.55}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:'Fira Code',monospace;font-size:10px;color:var(--teal);letter-spacing:.14em;margin-bottom:28px;opacity:0;animation:up .5s .1s forwards}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:blink 2.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+h1.hh{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,9vw,112px);line-height:.93;letter-spacing:.02em;color:var(--bright);margin-bottom:28px;opacity:0;animation:up .6s .2s forwards}
+h1.hh .g{color:var(--dim)}
+h1.hh .b{color:var(--blue)}
+.sub{font-size:17px;font-weight:300;color:var(--mut);max-width:400px;line-height:1.75;margin-bottom:36px;opacity:0;animation:up .6s .35s forwards}
+.sub strong{color:#5a8ab0;font-weight:400}
+.btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;opacity:0;animation:up .6s .5s forwards}
+.btn{font-family:'Fira Code',monospace;font-size:11px;letter-spacing:.1em;padding:13px 28px;display:inline-block;transition:all .2s}
+.bsolid{background:var(--blue);color:#fff;border:1px solid var(--blue)}
+.bsolid:hover{background:#2a7aff}
+.bghost{color:var(--txt);border:1px solid var(--bdr2)}
+.bghost:hover{border-color:var(--mut)}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--bdr)}
+.st{padding:22px 32px;border-right:1px solid var(--bdr)}
+.st:last-child{border-right:none}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:var(--bright);letter-spacing:.02em;margin-bottom:4px}
+.sn .t{color:var(--teal)}
+.sn .b{color:var(--blue)}
+.sl{font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.08em}
+
+/* SECTION */
+.sec{padding:0 48px 60px;border-bottom:1px solid var(--bdr)}
+.sechead{padding:52px 0 24px;display:flex;justify-content:space-between;align-items:baseline}
+.tag{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);letter-spacing:.2em}
+
+/* TESTIMONIALS — 2 across */
+.testimonials{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-bottom:32px}
+.tcard{background:var(--bg);padding:28px 32px;border-left:3px solid var(--amber);position:relative}
+.tcard:first-child{border-left-color:var(--amber)}
+.tcard:last-child{border-left-color:var(--teal)}
+.tmark{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.8;opacity:.25;position:absolute;top:20px;right:24px}
+.tcard:first-child .tmark{color:var(--amber)}
+.tcard:last-child .tmark{color:var(--teal)}
+.ttext{font-size:16px;font-weight:400;color:var(--bright);line-height:1.55;margin-bottom:12px}
+.ttext .hl{color:var(--amber);font-weight:500}
+.tcard:last-child .ttext .hl{color:var(--teal)}
+.tattr{font-family:'Fira Code',monospace;font-size:9px;color:var(--mut);letter-spacing:.1em;line-height:1.5}
+
+/* SWIMLOADING GRID */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr)}
+.sscreens{background:var(--sur);padding:28px;display:flex;gap:10px;align-items:flex-start;justify-content:center;overflow:hidden}
+.sph{border-radius:20px;overflow:hidden;border:1.5px solid rgba(255,255,255,.08);flex-shrink:0;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.sph img{display:block;width:100%;height:auto}
+.sph1{width:136px}
+.sph2{width:122px;margin-top:22px;opacity:.88}
+.sph3{width:110px;margin-top:42px;opacity:.7}
+.sinfo{background:var(--bg);padding:32px}
+.aname{font-family:'Bebas Neue',sans-serif;font-size:50px;line-height:1;color:var(--bright);letter-spacing:.04em;margin-bottom:5px}
+.asub{font-family:'Fira Code',monospace;font-size:10px;color:var(--teal);letter-spacing:.14em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.asub::after{content:'';flex:1;height:1px;background:var(--tealbdr);max-width:56px}
+.adesc{font-size:14px;font-weight:300;color:var(--mut);line-height:1.75;margin-bottom:18px}
+.adesc strong{color:#4a8878;font-weight:400}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.pill{font-family:'Fira Code',monospace;font-size:10px;color:var(--teal);letter-spacing:.06em;background:var(--tealglow);border:1px solid var(--tealbdr);padding:4px 11px;border-radius:3px}
+.pill.pro-pill{color:var(--pro);background:var(--proglow);border-color:var(--probdr)}
+.drows{display:flex;flex-direction:column;margin-bottom:18px}
+.dr{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--bdr)}
+.dr:first-child{border-top:1px solid var(--bdr)}
+.dk{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);letter-spacing:.08em}
+.dv{font-family:'Fira Code',monospace;font-size:11px;color:var(--txt)}
+.dv.hi{color:var(--teal)}
+.spons{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--ambglow);border:1px solid var(--ambbdr);border-radius:4px}
+.slabel{font-family:'Fira Code',monospace;font-size:9px;color:rgba(240,165,0,.5);letter-spacing:.12em;margin-bottom:2px}
+.sname{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--amber);letter-spacing:.06em}
+.sdetail{font-family:'Fira Code',monospace;font-size:10px;color:rgba(240,165,0,.4);margin-left:auto;letter-spacing:.04em}
+
+/* PRO MEMBERSHIP PANEL */
+.pro-panel{border:1px solid var(--probdr);border-top:none;background:linear-gradient(135deg,rgba(167,139,250,0.05) 0%,var(--bg) 60%)}
+.pro-inner{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--probdr)}
+.pro-screens{background:var(--sur);padding:28px;display:flex;gap:10px;align-items:flex-start;justify-content:center;overflow:hidden}
+.pro-img{border-radius:16px;overflow:hidden;border:1.5px solid rgba(167,139,250,.2);flex-shrink:0;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.pro-img img{display:block;width:100%;height:auto}
+.pimg1{width:148px}
+.pimg2{width:132px;margin-top:20px;opacity:.82}
+.pro-info{background:var(--bg);padding:32px}
+.pro-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.pro-name{font-family:'Bebas Neue',sans-serif;font-size:50px;line-height:1;color:var(--bright);letter-spacing:.04em}
+.pro-badge{font-family:'Fira Code',monospace;font-size:9px;color:var(--pro);letter-spacing:.1em;background:var(--proglow);border:1px solid var(--probdr);padding:3px 10px;border-radius:2px;white-space:nowrap}
+.pro-sub{font-family:'Fira Code',monospace;font-size:10px;color:var(--pro);letter-spacing:.14em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.pro-sub::after{content:'';flex:1;height:1px;background:var(--probdr);max-width:56px}
+.pro-desc{font-size:14px;font-weight:300;color:var(--mut);line-height:1.75;margin-bottom:20px}
+.pro-desc strong{color:#8878c0;font-weight:400}
+
+/* Accuracy callout */
+.accuracy{background:rgba(167,139,250,.06);border:1px solid var(--probdr);padding:18px 22px;border-radius:4px;margin-bottom:18px}
+.acc-nums{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.acc-big{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:var(--pro)}
+.acc-sep{font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.08em}
+.acc-result{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;color:var(--teal)}
+.acc-label{font-family:'Fira Code',monospace;font-size:9px;color:var(--pro);letter-spacing:.1em;margin-bottom:8px}
+.acc-note{font-size:13px;font-weight:300;color:var(--mut);line-height:1.65}
+.acc-note strong{color:#8878c0;font-weight:400}
+
+.pro-features{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.pf{background:var(--proglow);border:1px solid var(--probdr);padding:10px 13px;border-radius:3px}
+.pfk{font-family:'Fira Code',monospace;font-size:9px;color:var(--pro);letter-spacing:.1em;margin-bottom:3px}
+.pfv{font-size:13px;color:var(--txt);font-weight:300}
+
+/* BIG NUMS */
+.bignums{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-top:none}
+.bn{background:var(--sur);padding:22px 26px}
+.bnn{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;letter-spacing:.02em;margin-bottom:4px}
+.bnn.t{color:var(--teal)}
+.bnn.b{color:var(--blue)}
+.bnl{font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.08em;margin-bottom:8px}
+.regions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+.reg{background:var(--tealglow);border:1px solid var(--tealbdr);padding:8px 11px;border-radius:3px;display:flex;justify-content:space-between;align-items:center}
+.rn{font-family:'Fira Code',monospace;font-size:11px;color:var(--teal)}
+.rs{font-family:'Fira Code',monospace;font-size:9px;color:var(--mut)}
+
+/* DQ */
+.dqgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr)}
+.dql{background:var(--bg);padding:32px}
+.dqr{background:var(--sur);padding:32px;display:flex;flex-direction:column;gap:20px}
+.dqname{font-family:'Bebas Neue',sans-serif;font-size:50px;line-height:1;color:var(--bright);letter-spacing:.04em;margin-bottom:5px}
+.dqsub{font-family:'Fira Code',monospace;font-size:10px;color:var(--blue);letter-spacing:.14em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.dqsub::after{content:'';flex:1;height:1px;background:var(--bluebdr);max-width:56px}
+.dqdesc{font-size:14px;font-weight:300;color:var(--mut);line-height:1.75;margin-bottom:16px}
+.dqdesc strong{color:#4a6888;font-weight:400}
+.dq-screen{border-radius:8px;overflow:hidden;border:1.5px solid rgba(255,255,255,.07);box-shadow:0 12px 36px rgba(0,0,0,.5);margin-bottom:16px}
+.dq-screen img{display:block;width:100%;height:auto}
+.dqnums{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-bottom:16px}
+.dqn{background:var(--bg);padding:14px 17px}
+.dqnn{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:1;color:var(--blue);margin-bottom:3px}
+.dqnn.r{color:#e05050}
+.dqnl{font-family:'Fira Code',monospace;font-size:9px;color:var(--mut);letter-spacing:.08em}
+.pipe{display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.pb{flex:1;min-width:65px;background:var(--blueglow);border:1px solid var(--bluebdr);padding:8px 10px;border-radius:3px}
+.pbk{font-family:'Fira Code',monospace;font-size:9px;color:var(--blue);letter-spacing:.08em;margin-bottom:2px}
+.pbv{font-size:12px;color:var(--txt);font-weight:300}
+.parr{font-family:'Fira Code',monospace;font-size:12px;color:var(--dim);padding:0 4px;flex-shrink:0}
+.caps{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.cap{background:var(--blueglow);border:1px solid var(--bluebdr);padding:10px 12px;border-radius:3px}
+.capk{font-family:'Fira Code',monospace;font-size:9px;color:var(--blue);letter-spacing:.1em;margin-bottom:3px}
+.capv{font-size:13px;color:var(--txt);font-weight:300}
+.callout{background:var(--sur2);border:1px solid var(--bdr2);border-left:3px solid var(--blue);padding:16px 20px;border-radius:4px}
+.callout p{font-size:14px;color:var(--mut);line-height:1.8;font-weight:300}
+.callout p strong{color:#5a80aa;font-weight:400}
+
+/* OUTDOOR */
+.outgrid{display:grid;grid-template-columns:2fr 3fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr)}
+.outl{background:var(--bg);padding:32px}
+.outr{background:var(--sur);padding:32px}
+.outname{font-family:'Bebas Neue',sans-serif;font-size:50px;line-height:1;color:var(--bright);letter-spacing:.04em;margin-bottom:5px}
+.outsub{font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.14em;margin-bottom:16px}
+.outdesc{font-size:14px;font-weight:300;color:var(--mut);line-height:1.75;margin-bottom:18px}
+.outdesc strong{color:#5a7890;font-weight:400}
+.outstatus{display:inline-flex;align-items:center;gap:8px;font-family:'Fira Code',monospace;font-size:10px;color:var(--mut);letter-spacing:.1em;border:1px solid var(--bdr2);padding:8px 16px;border-radius:3px}
+.outdot{width:6px;height:6px;border-radius:50%;background:#8878d0}
+.specs{display:flex;flex-direction:column;border:1px solid var(--bdr)}
+.spec{display:grid;grid-template-columns:130px 1fr;padding:12px 14px;border-bottom:1px solid var(--bdr)}
+.spec:last-child{border-bottom:none}
+.spk{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);letter-spacing:.1em}
+.spv{font-size:14px;color:var(--txt);font-weight:300}
+
+/* ABOUT */
+.aboutgrid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--bdr)}
+.abl{padding:60px 48px;border-right:1px solid var(--bdr)}
+.abl h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.95;color:var(--bright);letter-spacing:.02em;margin-bottom:22px}
+.abl h2 .g{color:var(--dim)}
+.abcopy{font-size:15px;font-weight:300;color:var(--mut);line-height:1.85}
+.abcopy p+p{margin-top:14px}
+.abcopy strong{color:#4a7a9a;font-weight:400}
+.abr{padding:60px 48px}
+.caplist{display:flex;flex-direction:column}
+.crow{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--bdr)}
+.crow:first-child{border-top:1px solid var(--bdr)}
+.ck{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);letter-spacing:.1em}
+.cv{font-size:14px;color:var(--txt);font-weight:300}
+
+/* CONTACT */
+.ctgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 48px;gap:60px;border-bottom:1px solid var(--bdr)}
+.ctgrid h2{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:.95;color:var(--bright);letter-spacing:.02em}
+.ctgrid h2 .b{color:var(--blue)}
+.ctr p{font-size:16px;font-weight:300;color:var(--mut);line-height:1.8;margin-bottom:28px}
+.ctr p strong{color:#4a7a9a;font-weight:400}
+.eml{font-family:'Fira Code',monospace;font-size:17px;color:var(--blue);border-bottom:1px solid var(--bluebdr);padding-bottom:3px;display:inline-block;transition:all .2s}
+.eml:hover{color:#5a9aff;border-color:#5a9aff}
+
+footer{padding:20px 48px;display:flex;justify-content:space-between;align-items:center}
+footer span,footer a{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);letter-spacing:.08em}
+footer a:hover{color:var(--mut)}
+.flinks{display:flex;gap:28px}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hl{padding:108px 20px 52px}
+  .hr{height:300px;border-left:none;border-top:1px solid var(--bdr)}
+  h1.hh{font-size:68px}
+  .stats{grid-template-columns:1fr 1fr}
+  .st:nth-child(2){border-right:none}
+  .st:nth-child(3){border-top:1px solid var(--bdr)}
+  .st:nth-child(4){border-top:1px solid var(--bdr);border-right:none}
+  .sec{padding:0 20px 48px}
+  .testimonials{grid-template-columns:1fr}
+  .sgrid,.pro-inner,.dqgrid,.outgrid,.bignums{grid-template-columns:1fr}
+  .sscreens,.pro-screens{height:220px;overflow:hidden}
+  .sph2,.sph3,.pimg2{display:none}
+  .aboutgrid{grid-template-columns:1fr}
+  .abl{padding:48px 20px;border-right:none;border-bottom:1px solid var(--bdr)}
+  .abr{padding:48px 20px}
+  .ctgrid{grid-template-columns:1fr;padding:56px 20px;gap:32px}
+  .ctgrid h2{font-size:52px}
+  footer{padding:16px 20px;flex-direction:column;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="brand">app<b>.</b><em>loading</em></div>
+  <div class="nr">
+    <a href="#work">work</a>
+    <a href="#about">about</a>
+    <a href="#contact" class="cta">contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hl">
+    <div class="badge"><span class="dot"></span>available for new builds &mdash; cape town, za</div>
+    <h1 class="hh">APPS THAT<br><span class="g">SHIP</span> AND<br><span class="b">STICK.</span></h1>
+    <p class="sub">Solo builder based in <strong>Cape Town.</strong> I build the whole thing — mobile, web, data layer — and hand you something people actually use. <strong>No agency. No handoffs.</strong></p>
+    <div class="btns">
+      <a href="#work" class="btn bsolid">see the work</a>
+      <a href="mailto:dave@apploading.co" class="btn bghost">dave@apploading.co</a>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="hrbg"></div>
+    <div class="phones">
+      <div class="ph ph1"><img src="swim-home.jpg" alt="SwimLoading home"></div>
+      <div class="ph ph2"><img src="swim-swims.jpg" alt="SwimLoading swims"></div>
+      <div class="ph ph3"><img src="swim-trends.jpg" alt="SwimLoading trends"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="st"><div class="sn"><span class="t cnt" data-t="450">0</span>+</div><div class="sl">active users</div></div>
+  <div class="st"><div class="sn"><span class="cnt" data-t="200">0</span><span class="b">k</span></div><div class="sl">records processed daily</div></div>
+  <div class="st"><div class="sn"><span class="cnt" data-t="3">0</span></div><div class="sl">apps in production</div></div>
+  <div class="st"><div class="sn">1</div><div class="sl">builder. no handoffs.</div></div>
+</div>
+
+<div id="work"><div class="sec" style="padding-bottom:0"><div class="sechead"><span class="tag">// selected builds</span><span class="tag">03</span></div></div></div>
+
+<!-- SWIMLOADING -->
+<div class="sec">
+
+  <!-- TWO TESTIMONIALS -->
+  <div class="testimonials">
+    <div class="tcard">
+      <div class="tmark">"</div>
+      <p class="ttext"><span class="hl">5:23:30 &mdash; your app in 1m:30sec out.</span> Bloody unbelievable. You are a GURU of note.</p>
+      <div class="tattr">Open water swimmer &mdash; after completing a 15km Robben Island double crossing<br>Predicted 5:20 &middot; Actual 5:23:30 &middot; Off by 90 seconds</div>
+    </div>
+    <div class="tcard">
+      <div class="tmark">"</div>
+      <p class="ttext"><span class="hl">Dave Welensky verifying my day conditions with an unbelievable app</span> &mdash; check it out swimmers.</p>
+      <div class="tattr">Yolanda Carstens &mdash; open water swimmer, posting about SwimLoading to the SA community</div>
+    </div>
+  </div>
+
+  <div class="sgrid">
+    <div class="sscreens">
+      <div class="sph sph1"><img src="swim-home.jpg" alt="SwimLoading home"></div>
+      <div class="sph sph2"><img src="swim-log.jpg" alt="Log conditions"></div>
+      <div class="sph sph3"><img src="swim-swims.jpg" alt="Swims"></div>
+    </div>
+    <div class="sinfo">
+      <div class="aname">SwimLoading</div>
+      <div class="asub">open water &middot; south africa &middot; live</div>
+      <p class="adesc">Open water swim tracking, safety and community platform that grew to <strong>450+ swimmers across SA in under four weeks</strong> — self-funded, free tier, Maurten-sponsored. Real traction before a cent of marketing.</p>
+      <div class="pills">
+        <span class="pill">GPS logging</span>
+        <span class="pill">Live conditions</span>
+        <span class="pill">Group swims</span>
+        <span class="pill">Leaderboards</span>
+        <span class="pill">Safety screens</span>
+        <span class="pill">Race org</span>
+        <span class="pill">Monthly challenges</span>
+        <span class="pill pro-pill">&#9733; Pro: crossing predictor</span>
+        <span class="pill pro-pill">&#9733; Pro: False Bay intel</span>
+      </div>
+      <div class="drows">
+        <div class="dr"><span class="dk">users</span><span class="dv hi">450+ in under 4 weeks</span></div>
+        <div class="dr"><span class="dk">regions</span><span class="dv">Cape Town &middot; Durban &middot; PE &middot; Namibia</span></div>
+        <div class="dr"><span class="dk">model</span><span class="dv">Free app · Pro membership live</span></div>
+        <div class="dr"><span class="dk">launched</span><span class="dv">Feb 2026</span></div>
+        <div class="dr"><span class="dk">platform</span><span class="dv">React Native &mdash; iOS + Android</span></div>
+      </div>
+      <div class="spons">
+        <div><div class="slabel">official sponsor</div><div class="sname">Maurten</div></div>
+        <div class="sdetail">9-month partnership &middot; Apr&ndash;Dec 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRO MEMBERSHIP -->
+  <div class="pro-panel">
+    <div style="padding:20px 28px 0;display:flex;align-items:center;gap:12px;border-top:none">
+      <div style="font-family:'Fira Code',monospace;font-size:9px;color:var(--pro);letter-spacing:.2em">// pro membership &mdash; live</div>
+      <div style="flex:1;height:1px;background:var(--probdr);max-width:120px"></div>
+    </div>
+    <div class="pro-inner">
+      <div class="pro-screens">
+        <div class="pro-img pimg1"><img src="swim-predict.jpg" alt="Crossing prediction"></div>
+        <div class="pro-img pimg2"><img src="swim-calc.jpg" alt="Double crossing calc"></div>
+      </div>
+      <div class="pro-info">
+        <div class="pro-header">
+          <div class="pro-name">Pro Tier</div>
+          <div class="pro-badge">live &mdash; not yet marketed or sold</div>
+        </div>
+        <div class="pro-sub">advanced intelligence &middot; for serious swimmers</div>
+        <p class="pro-desc">
+          Built the free app to 450+ users first. Now monetising with a pro membership tier featuring
+          <strong>crossing time predictors, False Bay conditions intel and personal pace modelling</strong> —
+          calibrated on real GPS data from elite open water swimmers.
+        </p>
+        <div class="accuracy">
+          <div class="acc-nums">
+            <span class="acc-big">5:20</span>
+            <span class="acc-sep">predicted &rarr; actual</span>
+            <span class="acc-result">5:23:30</span>
+            <span class="acc-sep">off by 90 sec</span>
+          </div>
+          <div class="acc-label">Robben Island double crossing &mdash; verified prediction &mdash; 15km</div>
+          <p class="acc-note" style="margin-top:8px">Accounts for tidal currents, wind conditions, cold water pace penalty, feed stops and turnaround time. <strong>Calibrated on elite athlete GPS data</strong> from actual crossings.</p>
+        </div>
+        <div class="pro-features">
+          <div class="pf"><div class="pfk">Robben Island predictor</div><div class="pfv">Double crossing time estimate</div></div>
+          <div class="pf"><div class="pfk">False Bay intel</div><div class="pfv">Conditions &amp; crossing windows</div></div>
+          <div class="pf"><div class="pfk">Personal pace model</div><div class="pfv">Pool &amp; open water calibration</div></div>
+          <div class="pf"><div class="pfk">Cold water adjustment</div><div class="pfv">Temperature-adjusted pace penalty</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bignums">
+    <div class="bn">
+      <div class="bnn t"><span class="cnt2" data-t="450">0</span>+</div>
+      <div class="bnl">active swimmers</div>
+      <p style="font-size:13px;color:var(--dim);font-weight:300;line-height:1.7;margin-bottom:12px">Organic growth in under 4 weeks. Self-funded. No marketing spend.</p>
+      <div class="regions">
+        <div class="reg"><span class="rn">Cape Town</span><span class="rs">origin</span></div>
+        <div class="reg"><span class="rn">Durban</span><span class="rs">expanded</span></div>
+        <div class="reg"><span class="rn">Port Elizabeth</span><span class="rs">expanded</span></div>
+        <div class="reg"><span class="rn">Namibia</span><span class="rs">expanded</span></div>
+      </div>
+    </div>
+    <div class="bn">
+      <div class="bnn b" style="font-size:32px;margin-bottom:8px">swimloading.com</div>
+      <div class="bnl">live &mdash; no app store required</div>
+      <p style="font-size:14px;color:var(--mut);font-weight:300;line-height:1.75;margin-bottom:14px">
+        Progressive web app — installs from the browser, no App Store needed. Maurten confirmed as title sponsor for a 9-month monthly challenge prize calendar through December 2026.
+      </p>
+      <a href="https://swimloading.com" target="_blank" rel="noopener" style="font-family:'Fira Code',monospace;font-size:11px;color:var(--blue);letter-spacing:.06em;border-bottom:1px solid var(--bluebdr);padding-bottom:2px">swimloading.com &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- DQ PLATFORM -->
+<div class="sec">
+  <div class="dqgrid">
+    <div class="dql">
+      <div class="dqname">DQ Platform</div>
+      <div class="dqsub">enterprise &middot; s/4hana &middot; daily production</div>
+      <p class="dqdesc">Proprietary data quality engine built from scratch. Deployed into a <strong>large South African retailer's live S/4HANA migration</strong> — runs daily in production against 200,000 records.</p>
+      <div class="dq-screen"><img src="dq-app.jpg" alt="DQ platform interface"></div>
+      <div class="dqnums">
+        <div class="dqn"><div class="dqnn">200k</div><div class="dqnl">records / day</div></div>
+        <div class="dqn"><div class="dqnn">993</div><div class="dqnl">data columns</div></div>
+        <div class="dqn"><div class="dqnn r">171k+</div><div class="dqnl">issues surfaced</div></div>
+        <div class="dqn"><div class="dqnn">Daily</div><div class="dqnl">production cadence</div></div>
+      </div>
+      <div class="tag" style="margin-bottom:10px">// data pipeline</div>
+      <div class="pipe">
+        <div class="pb"><div class="pbk">source</div><div class="pbv">ECC extract</div></div>
+        <div class="parr">&rarr;</div>
+        <div class="pb"><div class="pbk">transform</div><div class="pbv">KNIME</div></div>
+        <div class="parr">&rarr;</div>
+        <div class="pb"><div class="pbk">quality</div><div class="pbv">DQ engine</div></div>
+        <div class="parr">&rarr;</div>
+        <div class="pb"><div class="pbk">target</div><div class="pbv">SAP Cockpit</div></div>
+      </div>
+    </div>
+    <div class="dqr">
+      <div>
+        <div class="tag" style="margin-bottom:12px">// platform capabilities</div>
+        <div class="caps">
+          <div class="cap"><div class="capk">dq workspace</div><div class="capv">Profile, run rules, AI insights</div></div>
+          <div class="cap"><div class="capk">rule builder</div><div class="capv">Create &amp; test rules — no Python</div></div>
+          <div class="cap"><div class="capk">enterprise connect</div><div class="capv">SAP HANA, ECC/S4, DB2, Azure SQL</div></div>
+          <div class="cap"><div class="capk">history &amp; trend</div><div class="capv">DQ runs over time, Power BI ready</div></div>
+          <div class="cap"><div class="capk">ai insights</div><div class="capv">AI-powered analysis per data object</div></div>
+          <div class="cap"><div class="capk">remediation</div><div class="capv">Business issue tracking &amp; sign-off</div></div>
+        </div>
+      </div>
+      <div class="callout">
+        <p>Every day, 200,000 master data records run through 993 quality checks. Every failure gets logged, categorised and assigned to a business owner to fix before it corrupts the migration.<br><br>Without this, those <strong>171,000+ issues</strong> would have landed in S/4HANA on go-live day. They didn't.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUTDOOR -->
+<div class="sec">
+  <div class="outgrid">
+    <div class="outl">
+      <div class="outname">Outdoor Brand</div>
+      <div class="outsub">// cold-weather &middot; app + portal</div>
+      <p class="outdesc">End-to-end solo contract for a cold-weather outdoor brand. <strong>Full stack from brief to pre-production</strong> — mobile app and web customer portal. Going live shortly.</p>
+      <div class="outstatus"><span class="outdot"></span>pre-production &mdash; final testing</div>
+    </div>
+    <div class="outr">
+      <div class="specs">
+        <div class="spec"><span class="spk">scope</span><span class="spv">Mobile app + web customer portal</span></div>
+        <div class="spec"><span class="spk">delivery</span><span class="spv">Full stack, solo — brief to deployment</span></div>
+        <div class="spec"><span class="spk">stack</span><span class="spv">React Native, Next.js, Node.js</span></div>
+        <div class="spec"><span class="spk">status</span><span class="spv">Pre-production, going live soon</span></div>
+        <div class="spec"><span class="spk">engagement</span><span class="spv">Solo contract build</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="aboutgrid">
+  <div class="abl">
+    <h2>ONE BUILDER.<br><span class="g">THE WHOLE</span><br>STACK.</h2>
+    <div class="abcopy">
+      <p>I'm a solo builder — <strong>not an agency</strong> — which means you work with the person who makes every technical decision, writes the code, and is still reachable after handoff.</p>
+      <p>Background spans <strong>enterprise SAP data engineering</strong> at scale — lead on Africa's largest SAP Retail rollout — to consumer mobile apps with real user traction. I know what production software needs to survive.</p>
+      <p>Based in <strong>Cape Town.</strong> Available for contract builds from early brief through to deployed and stable.</p>
+    </div>
+  </div>
+  <div class="abr">
+    <div class="caplist">
+      <div class="crow"><span class="ck">mobile</span><span class="cv">React Native — iOS &amp; Android</span></div>
+      <div class="crow"><span class="ck">web</span><span class="cv">React, Next.js, Node.js, full-stack</span></div>
+      <div class="crow"><span class="ck">data</span><span class="cv">Data quality, ETL, enterprise integrations</span></div>
+      <div class="crow"><span class="ck">enterprise</span><span class="cv">SAP S/4HANA, data migration, ECC</span></div>
+      <div class="crow"><span class="ck">engagement</span><span class="cv">Contract — brief to deployment</span></div>
+      <div class="crow"><span class="ck">location</span><span class="cv">Cape Town, ZA — remote-capable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="ctgrid">
+  <div>
+    <h2>LET'S BUILD<br>SOMETHING<br><span class="b">THAT WORKS.</span></h2>
+  </div>
+  <div class="ctr">
+    <p>Got an app that needs building, a system that needs untangling, or a data problem that needs solving? <strong>I work on a contract basis</strong> — from early brief through to production-ready software real people actually use.</p>
+    <a href="mailto:dave@apploading.co" class="eml">dave@apploading.co</a>
+  </div>
+</section>
+
+<footer>
+  <span>apploading.co &mdash; cape town, za &mdash; &copy; 2026</span>
+  <div class="flinks">
+    <a href="https://swimloading.com" target="_blank" rel="noopener">swimloading.com</a>
+    <a href="mailto:dave@apploading.co">dave@apploading.co</a>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>30),{passive:true});
+function animC(el,t,d){const s=performance.now();(function f(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t);if(p<1)requestAnimationFrame(f)})(performance.now())}
+const io=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.cnt').forEach(el=>animC(el,+el.dataset.t,1400));io.unobserve(e.target)}})},{threshold:.3});
+document.querySelectorAll('.stats').forEach(el=>io.observe(el));
+const io2=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.cnt2').forEach(el=>animC(el,+el.dataset.t,1800));io2.unobserve(e.target)}})},{threshold:.2});
+document.querySelectorAll('.bignums').forEach(el=>io2.observe(el));
+</script>
+</body>
+</html>
