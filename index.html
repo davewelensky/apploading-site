@@ -27,250 +27,261 @@ img{display:block;max-width:100%}
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  height:56px;
+  height:52px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
-  background:rgba(11,14,23,0.92);
+  padding:0 44px;
+  background:rgba(11,14,23,0.93);
   border-bottom:1px solid rgba(255,255,255,0.06);
   backdrop-filter:blur(12px);
 }
-.logo{
-  font-size:14px;font-weight:500;
-  color:#e8f0fc;letter-spacing:-.01em;
-}
+.logo{font-size:13px;font-weight:500;color:#e8f0fc;letter-spacing:-.01em}
 .logo em{color:#00e5ff;font-style:normal}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:13px;color:#4a5a6e;transition:color .2s}
-.nav-links a:hover{color:#8a9bb0}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;color:#3a4a5e;transition:color .2s}
+.nav-links a:hover{color:#7a8b9e}
 .nav-cta{
   color:#00e5ff!important;
-  border:1px solid rgba(0,229,255,0.22);
-  padding:6px 18px;border-radius:3px;
-  font-weight:500!important;
-  transition:all .2s!important;
+  border:1px solid rgba(0,229,255,0.2);
+  padding:5px 16px;border-radius:3px;
+  font-weight:500!important;transition:all .2s!important;
 }
 .nav-cta:hover{background:rgba(0,229,255,0.06)!important}
 
 /* HERO */
 .hero{
-  min-height:100vh;
+  min-height:72vh;
   display:flex;align-items:center;
-  padding:140px 48px 100px;
+  padding:100px 44px 72px;
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.hero-inner{max-width:720px}
+.hero-inner{max-width:680px}
 .hero-tag{
   font-size:11px;font-weight:500;
   color:#00e5ff;letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:32px;
-  display:flex;align-items:center;gap:10px;
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:8px;
 }
-.hero-tag-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:#00e5ff;
-  animation:blink 2.5s ease-in-out infinite;
-  flex-shrink:0;
-}
+.dot{width:6px;height:6px;border-radius:50%;background:#00e5ff;animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hero h1{
   font-family:'Noto Serif',serif;
-  font-size:clamp(48px,5.5vw,74px);
-  font-weight:700;line-height:1.06;
+  font-size:clamp(42px,5vw,68px);
+  font-weight:700;line-height:1.07;
   color:#e8f0fc;letter-spacing:-.025em;
-  margin-bottom:24px;
+  margin-bottom:20px;
 }
 .hero h1 em{font-style:italic;color:#00e5ff}
 .hero-sub{
-  font-size:18px;color:#4a5a6e;
-  line-height:1.8;max-width:500px;
-  margin-bottom:44px;
+  font-size:17px;color:#4a5a6e;line-height:1.8;
+  max-width:480px;margin-bottom:36px;
 }
 .hero-sub strong{color:#7a8b9e;font-weight:400}
 .hero-cta{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:14px;font-weight:500;
-  color:#00e5ff;
-  border-bottom:1px solid rgba(0,229,255,0.25);
-  padding-bottom:3px;
+  font-size:13px;font-weight:500;color:#00e5ff;
+  border-bottom:1px solid rgba(0,229,255,0.22);padding-bottom:2px;
   transition:border-color .2s;
 }
-.hero-cta:hover{border-color:rgba(0,229,255,0.7)}
+.hero-cta:hover{border-color:rgba(0,229,255,0.6)}
 
 /* WORK HEADER */
-.work-header{
-  padding:80px 48px 0;
-}
+.work-header{padding:56px 44px 0}
 .section-label{
-  font-size:11px;font-weight:500;
-  color:#2a3a50;letter-spacing:.12em;text-transform:uppercase;
-  margin-bottom:14px;
+  font-size:10px;font-weight:500;
+  color:#243040;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:12px;
 }
 .work-header h2{
   font-family:'Noto Serif',serif;
-  font-size:clamp(28px,3vw,38px);
+  font-size:clamp(24px,2.8vw,34px);
   font-weight:700;color:#e8f0fc;
   letter-spacing:-.02em;line-height:1.2;
-  max-width:500px;
 }
 
 /* PROJECTS */
 .project{
-  padding:80px 48px;
-  border-bottom:1px solid rgba(255,255,255,0.06);
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:80px;
+  gap:64px;
   align-items:center;
+  padding:56px 44px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.project.dark{background:#0e1120}
-.project.flip .proj-img{order:-1}
+.project.dark{background:#0d1020}
+.project.flip .proj-right{order:-1}
 
 .proj-num{
-  font-size:11px;font-weight:500;
-  color:#243040;letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:12px;
+  font-size:10px;font-weight:500;
+  color:#1e2e40;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:10px;
 }
 .proj-title{
   font-family:'Noto Serif',serif;
-  font-size:clamp(26px,2.8vw,34px);
+  font-size:clamp(24px,2.6vw,32px);
   font-weight:700;color:#e8f0fc;
   letter-spacing:-.02em;line-height:1.15;
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 .proj-title em{font-style:italic;color:#00e5ff}
 .proj-body{
-  font-size:15px;color:#4a5a6e;line-height:1.85;
-  margin-bottom:28px;
+  font-size:14px;color:#4a5a6e;line-height:1.85;
+  margin-bottom:22px;
 }
 .proj-body strong{color:#7a8b9e;font-weight:400}
 .proj-quote{
   font-family:'Noto Serif',serif;
-  font-size:16px;font-style:italic;
-  color:#7a8b9e;line-height:1.65;
-  border-left:2px solid rgba(0,229,255,0.25);
-  padding-left:20px;
+  font-size:15px;font-style:italic;
+  color:#6a7a8e;line-height:1.65;
+  border-left:2px solid rgba(0,229,255,0.2);
+  padding-left:16px;
 }
 .proj-quote em{color:#00e5ff;font-style:inherit}
 .proj-quote cite{
-  display:block;
-  font-size:12px;font-style:normal;
+  display:block;font-size:11px;font-style:normal;
   font-family:'Inter',sans-serif;
-  font-weight:400;
-  color:#2a3a50;margin-top:10px;
-  letter-spacing:.02em;
+  color:#243040;margin-top:8px;letter-spacing:.02em;
 }
 
-/* Image containers */
-.proj-img img{
+/* Screenshot */
+.proj-right img{
   width:100%;border-radius:8px;
   border:1px solid rgba(255,255,255,0.07);
-  box-shadow:0 24px 64px rgba(0,0,0,0.55);
+  box-shadow:0 20px 56px rgba(0,0,0,0.55);
 }
-.phone-wrap{
-  display:flex;justify-content:center;align-items:center;
-}
+.phone-wrap{display:flex;justify-content:center}
 .phone-frame{
-  width:210px;
-  border-radius:30px;overflow:hidden;
+  width:195px;border-radius:28px;overflow:hidden;
   border:2px solid rgba(255,255,255,0.08);
-  box-shadow:0 24px 64px rgba(0,0,0,0.55);
+  box-shadow:0 20px 56px rgba(0,0,0,0.55);
 }
-.phone-frame img{display:block;width:100%;height:auto}
+.phone-frame img{display:block;width:100%}
+
+/* Metric panel (used when no screenshot available) */
+.metric-panel{
+  background:#0d1020;
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:8px;
+  padding:28px;
+  display:flex;flex-direction:column;gap:0;
+}
+.project.dark .metric-panel{background:#0b0e17}
+.metric-row{
+  display:flex;gap:0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.metric-row:last-child{border-bottom:none}
+.metric{
+  flex:1;padding:20px 16px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+.metric:last-child{border-right:none}
+.metric-n{
+  font-family:'Noto Serif',serif;
+  font-size:28px;font-weight:700;
+  color:#e8f0fc;line-height:1;
+  margin-bottom:5px;
+}
+.metric-n.cyan{color:#00e5ff}
+.metric-l{
+  font-size:11px;font-weight:400;
+  color:#2a3a4e;line-height:1.4;
+}
+.panel-label{
+  font-size:10px;font-weight:500;
+  color:#1e2e40;letter-spacing:.1em;text-transform:uppercase;
+  padding:16px 16px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.panel-tag-row{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding:16px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.panel-tag{
+  font-size:11px;font-weight:500;
+  color:#2a3a4e;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:3px 10px;border-radius:3px;
+}
+.panel-note{
+  font-size:12px;color:#2a3a4e;
+  padding:14px 16px;
+  line-height:1.6;
+}
 
 /* ABOUT */
 .about{
-  padding:80px 48px;
+  padding:60px 44px;
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
-.about-inner{max-width:600px}
+.about-inner{max-width:580px}
 .about h2{
   font-family:'Noto Serif',serif;
-  font-size:clamp(28px,3vw,36px);
+  font-size:clamp(26px,2.8vw,34px);
   font-weight:700;color:#e8f0fc;
-  letter-spacing:-.02em;
-  margin-bottom:28px;
+  letter-spacing:-.02em;margin-bottom:24px;
 }
-.about p{
-  font-size:16px;color:#4a5a6e;line-height:1.9;
-}
-.about p+p{margin-top:16px}
+.about p{font-size:15px;color:#4a5a6e;line-height:1.9}
+.about p+p{margin-top:14px}
 .about strong{color:#7a8b9e;font-weight:400}
-.stack-row{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:36px;
-}
+.stack-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:28px}
 .stack-tag{
-  font-size:12px;font-weight:500;
-  color:#2a3a50;
+  font-size:11px;font-weight:500;color:#243040;
   border:1px solid rgba(255,255,255,0.05);
-  padding:5px 12px;border-radius:3px;
+  padding:4px 11px;border-radius:3px;
 }
 
 /* CONTACT */
 .contact{
-  padding:100px 48px;
-  text-align:center;
-  position:relative;overflow:hidden;
+  padding:88px 44px;text-align:center;position:relative;overflow:hidden;
 }
 .contact::before{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 50% 100%, rgba(0,229,255,0.04) 0%, transparent 70%);
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(0,229,255,0.04) 0%,transparent 70%);
   pointer-events:none;
 }
 .contact h2{
   font-family:'Noto Serif',serif;
-  font-size:clamp(44px,6vw,78px);
+  font-size:clamp(40px,6vw,72px);
   font-weight:700;color:#e8f0fc;
   letter-spacing:-.03em;line-height:1.05;
-  margin-bottom:20px;
-  position:relative;z-index:1;
+  margin-bottom:16px;position:relative;z-index:1;
 }
 .contact h2 em{font-style:italic;color:#00e5ff}
 .contact-sub{
-  font-size:17px;color:#4a5a6e;
-  max-width:440px;margin:0 auto 44px;
-  line-height:1.75;
+  font-size:16px;color:#4a5a6e;max-width:420px;
+  margin:0 auto 36px;line-height:1.75;
   position:relative;z-index:1;
 }
 .email-link{
-  font-size:20px;font-weight:500;
-  color:#00e5ff;
-  border-bottom:1px solid rgba(0,229,255,0.25);
-  padding-bottom:3px;
-  display:inline-block;
-  transition:border-color .2s;
+  font-size:18px;font-weight:500;color:#00e5ff;
+  border-bottom:1px solid rgba(0,229,255,0.22);padding-bottom:2px;
+  display:inline-block;transition:border-color .2s;
   position:relative;z-index:1;
 }
-.email-link:hover{border-color:rgba(0,229,255,0.7)}
+.email-link:hover{border-color:rgba(0,229,255,0.6)}
 
 /* FOOTER */
 footer{
-  padding:22px 48px;
+  padding:18px 44px;
   border-top:1px solid rgba(255,255,255,0.05);
   display:flex;justify-content:space-between;align-items:center;
 }
-footer span,footer a{
-  font-size:12px;color:#243040;
-  letter-spacing:.03em;
-}
-footer a:hover{color:#3a4a5e}
-.footer-links{display:flex;gap:24px}
+footer span,footer a{font-size:11px;color:#1e2e40;letter-spacing:.03em}
+footer a:hover{color:#2a3a4e}
+.footer-links{display:flex;gap:20px}
 
 /* RESPONSIVE */
-@media(max-width:860px){
-  nav{padding:0 20px}
-  .hero{padding:110px 24px 80px}
-  .work-header{padding:60px 24px 0}
-  .project{
-    grid-template-columns:1fr;
-    gap:40px;padding:60px 24px;
-  }
-  .project.flip .proj-img{order:0}
+@media(max-width:820px){
+  nav{padding:0 18px}
+  .hero{padding:90px 20px 56px}
+  .work-header{padding:48px 20px 0}
+  .project{grid-template-columns:1fr;gap:32px;padding:48px 20px}
+  .project.flip .proj-right{order:0}
   .phone-wrap{justify-content:flex-start}
-  .about{padding:60px 24px}
-  .contact{padding:80px 24px}
-  footer{padding:18px 24px;flex-direction:column;gap:10px;text-align:center}
+  .about{padding:48px 20px}
+  .contact{padding:64px 20px}
+  footer{padding:16px 20px;flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 </head>
@@ -287,7 +298,7 @@ footer a:hover{color:#3a4a5e}
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><span class="hero-tag-dot"></span>Available for new builds — Cape Town, ZA</div>
+    <div class="hero-tag"><span class="dot"></span>Available for new builds — Cape Town, ZA</div>
     <h1>I build apps that ship,<br>scale and <em>actually work.</em></h1>
     <p class="hero-sub">
       Solo builder based in Cape Town. <strong>Mobile apps, web platforms and data tools</strong> — built from scratch, without agency overhead.
@@ -298,58 +309,135 @@ footer a:hover{color:#3a4a5e}
 
 <div id="work" class="work-header">
   <div class="section-label">Proof of work</div>
-  <h2>Three things I've built.<br>All of them real.</h2>
+  <h2>Four apps. All in production.</h2>
 </div>
 
-<!-- PROJECT 1 -->
+<!-- PROJECT 1: DQ ENGINE -->
 <div class="project dark">
-  <div class="proj-info">
-    <div class="proj-num">01 — Prediction engine</div>
-    <h3 class="proj-title">Predicted a 15km ocean swim<br>to within <em>90 seconds.</em></h3>
+  <div class="proj-left">
+    <div class="proj-num">01 — Data quality engine</div>
+    <h3 class="proj-title">55 rules. 200k records.<br><em>Daily. In production.</em></h3>
     <p class="proj-body">
-      Open water crossings in Cape Town involve cold Atlantic water, tidal streams, wind-driven currents and pace degradation over distance. I built a multi-variable prediction engine from scratch — integrating live tidal feeds, marine weather data, cold water pace penalty curves and GPS-calibrated feed-stop modelling. <strong>No vendor. No off-the-shelf model.</strong>
+      A Python data quality engine built from scratch for an enterprise SAP S/4HANA migration. 55 custom rules run daily against live master data — catching failures, scoring records and routing every issue to a business owner before it reaches the new system. <strong>No vendor. No off-the-shelf tooling. Built, deployed and running.</strong> 171,000 issues caught before go-live.
     </p>
-    <blockquote class="proj-quote">
-      <em>"5:23:30 — your app in 1m:30sec out. Bloody unbelievable. You are a GURU of note."</em>
-      <cite>Open water swimmer — after completing her 15km Robben Island double crossing</cite>
-    </blockquote>
   </div>
-  <div class="proj-img">
-    <img src="swim-predict.jpg" alt="Ocean crossing prediction interface">
+  <div class="proj-right">
+    <div class="metric-panel">
+      <div class="panel-label">Live production stats</div>
+      <div class="metric-row">
+        <div class="metric">
+          <div class="metric-n">55</div>
+          <div class="metric-l">Custom DQ rules</div>
+        </div>
+        <div class="metric">
+          <div class="metric-n cyan">200k</div>
+          <div class="metric-l">Records processed daily</div>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric">
+          <div class="metric-n">171k</div>
+          <div class="metric-l">Issues caught pre go-live</div>
+        </div>
+        <div class="metric">
+          <div class="metric-n cyan">993</div>
+          <div class="metric-l">Data columns monitored</div>
+        </div>
+      </div>
+      <div class="panel-tag-row">
+        <span class="panel-tag">Python</span>
+        <span class="panel-tag">SAP S/4HANA</span>
+        <span class="panel-tag">Rule engine</span>
+        <span class="panel-tag">ETL</span>
+      </div>
+      <div class="panel-note">SAP ECC extract → KNIME transform → DQ engine → SAP remediation cockpit</div>
+    </div>
   </div>
 </div>
 
-<!-- PROJECT 2 -->
+<!-- PROJECT 2: ARCTIC APE -->
 <div class="project flip">
-  <div class="proj-info">
-    <div class="proj-num">02 — Consumer mobile app</div>
+  <div class="proj-left">
+    <div class="proj-num">02 — Production management platform</div>
+    <h3 class="proj-title">Full order lifecycle,<br><em>linked to Monday.com.</em></h3>
+    <p class="proj-body">
+      A production management platform built for a manufacturing business — tracking orders from brief to delivery, with full workflow integration into Monday.com. Customer-facing portal, internal production views, status tracking and automated handoffs between teams. <strong>Built from brief to live deployment, solo.</strong>
+    </p>
+  </div>
+  <div class="proj-right">
+    <div class="metric-panel">
+      <div class="panel-label">Platform overview</div>
+      <div class="metric-row">
+        <div class="metric">
+          <div class="metric-n cyan">Full</div>
+          <div class="metric-l">Order lifecycle tracking</div>
+        </div>
+        <div class="metric">
+          <div class="metric-n">Live</div>
+          <div class="metric-l">Monday.com integration</div>
+        </div>
+      </div>
+      <div class="panel-tag-row">
+        <span class="panel-tag">Next.js</span>
+        <span class="panel-tag">Monday.com API</span>
+        <span class="panel-tag">Supabase</span>
+        <span class="panel-tag">Customer portal</span>
+      </div>
+      <div class="panel-note">Customer-facing order tracking · internal production views · automated workflow handoffs</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 3: SWIMLOADING -->
+<div class="project dark">
+  <div class="proj-left">
+    <div class="proj-num">03 — Consumer mobile app</div>
     <h3 class="proj-title">Zero to <em>450 users</em><br>in four weeks.</h3>
     <p class="proj-body">
-      South Africa's open water swimming community had no platform for real-time conditions, group coordination or community tracking — just WhatsApp groups. I built SwimLoading: a React Native app with live conditions, GPS swim logging, leaderboards and race organisation. <strong>Self-funded. Zero marketing. Built and shipped solo.</strong> Four regions in eight weeks, with a Maurten sponsorship following.
+      SwimLoading — a React Native app for South Africa's open water swimming community. Live conditions, GPS swim logging, group coordination, leaderboards and race organisation. <strong>Self-funded. Zero marketing. Built and shipped solo.</strong> Four regions in eight weeks. Includes a crossing prediction engine accurate to 90 seconds on a 15km ocean swim. Maurten sponsorship followed.
     </p>
     <blockquote class="proj-quote">
       <em>"Dave Welensky verifying my day conditions with an unbelievable app — check it out swimmers."</em>
       <cite>Yolanda Carstens — open water swimmer, SA community</cite>
     </blockquote>
   </div>
-  <div class="proj-img phone-wrap">
+  <div class="proj-right phone-wrap">
     <div class="phone-frame">
       <img src="swim-home.jpg" alt="SwimLoading app">
     </div>
   </div>
 </div>
 
-<!-- PROJECT 3 -->
-<div class="project dark">
-  <div class="proj-info">
-    <div class="proj-num">03 — Enterprise data platform</div>
-    <h3 class="proj-title">171,000 data failures<br>caught before <em>go-live.</em></h3>
+<!-- PROJECT 4: IXIA HUB -->
+<div class="project">
+  <div class="proj-left">
+    <div class="proj-num">04 — Consulting operations platform</div>
+    <h3 class="proj-title">A whole ops platform,<br><em>built and deployed solo.</em></h3>
     <p class="proj-body">
-      A large South African retailer was migrating to SAP S/4HANA with 200,000 master data records across 993 columns. I built a proprietary data quality engine from scratch — <strong>no vendor, no off-the-shelf tooling</strong> — running daily in production, surfacing every failure and routing it to the right business owner before it reached the new system.
+      An end-to-end internal operations platform for a consulting firm — projects, timesheets, leave, expenses, skills matrix, staffing search and performance reviews. Role-based access, real-time data, mobile-ready. <strong>From database schema to deployed product, solo.</strong> Built white-label so it can be redeployed for any consulting business.
     </p>
   </div>
-  <div class="proj-img">
-    <img src="dq-app.jpg" alt="Data quality platform">
+  <div class="proj-right">
+    <div class="metric-panel">
+      <div class="panel-label">Platform modules</div>
+      <div class="metric-row">
+        <div class="metric">
+          <div class="metric-n cyan">8+</div>
+          <div class="metric-l">Live modules</div>
+        </div>
+        <div class="metric">
+          <div class="metric-n">4</div>
+          <div class="metric-l">Role tiers</div>
+        </div>
+      </div>
+      <div class="panel-tag-row">
+        <span class="panel-tag">Next.js 14</span>
+        <span class="panel-tag">Supabase</span>
+        <span class="panel-tag">TypeScript</span>
+        <span class="panel-tag">White-label</span>
+      </div>
+      <div class="panel-note">Projects · timesheets · leave · expenses · skills matrix · staffing search · assessments · announcements</div>
+    </div>
   </div>
 </div>
 
@@ -362,17 +450,17 @@ footer a:hover{color:#3a4a5e}
       I'm a solo builder — <strong>not an agency</strong> — which means you work with the person who makes every technical decision, writes the code and is still reachable six months after you've gone live.
     </p>
     <p>
-      My background spans <strong>enterprise SAP data engineering at scale</strong> — lead on Africa's largest SAP Retail rollout — to consumer mobile apps with real user traction built and grown solo. I know what it takes to get software from idea to production and keep it there.
+      Background spans <strong>enterprise SAP data engineering at scale</strong> — lead on Africa's largest SAP Retail rollout — to consumer mobile apps with real user traction built and grown solo. I know what it takes to get software from idea to production and keep it there.
     </p>
-    <p>
-      Based in <strong>Cape Town.</strong> Available for contract builds from early brief through to deployed, stable and working.
-    </p>
+    <p>Based in <strong>Cape Town.</strong> Available for contract builds from early brief through to deployed, stable and working.</p>
     <div class="stack-row">
       <span class="stack-tag">React Native</span>
       <span class="stack-tag">React / Next.js</span>
+      <span class="stack-tag">Python</span>
       <span class="stack-tag">Node.js</span>
-      <span class="stack-tag">Data quality / ETL</span>
+      <span class="stack-tag">Supabase / Postgres</span>
       <span class="stack-tag">SAP S/4HANA</span>
+      <span class="stack-tag">Data quality / ETL</span>
       <span class="stack-tag">Data migration</span>
     </div>
   </div>
@@ -381,9 +469,7 @@ footer a:hover{color:#3a4a5e}
 <!-- CONTACT -->
 <section id="contact" class="contact">
   <h2>Got something<br>that needs<br><em>building?</em></h2>
-  <p class="contact-sub">
-    App that needs building, a system that needs untangling, or a data problem that needs solving. I work on a contract basis — from brief to production-ready.
-  </p>
+  <p class="contact-sub">App that needs building, a system that needs untangling, or a data problem that needs solving. Contract basis — from brief to production-ready.</p>
   <a href="mailto:dave@apploading.co" class="email-link">dave@apploading.co</a>
 </section>
 
