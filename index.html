@@ -7,202 +7,270 @@
 <meta name="description" content="Solo app builder based in Cape Town. Mobile apps, web platforms and data tools built from scratch.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#090d14;--bg2:#0e1320;
-  --bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.13);
-  --txt:#a8b8d0;--muted:#52647c;--bright:#eef3fb;--dim:#1e2a3a;
-  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.07);--cyan-bdr:rgba(0,229,255,0.18);
-  --lime:#b8f000;--amber:#f59e0b;--red:#ff5555;
-}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:#0b0e17;
+  color:#8a9bb0;
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
-img{display:block}
+img{display:block;max-width:100%}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(9,13,20,0.92);border-bottom:1px solid var(--bdr);backdrop-filter:blur(20px)}
-.logo{font-family:'DM Mono',monospace;font-size:14px;color:var(--bright)}
-.logo em{color:var(--cyan);font-style:normal}
-.nav-r{display:flex;align-items:center;gap:32px}
-.nav-r a{font-size:13px;color:var(--muted);transition:color .2s}
-.nav-r a:hover{color:var(--txt)}
-.nav-cta{color:var(--cyan)!important;border:1px solid var(--cyan-bdr);padding:6px 18px;border-radius:4px;transition:background .2s!important}
-.nav-cta:hover{background:var(--cyan-dim)!important}
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(11,14,23,0.92);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+}
+.logo{
+  font-size:14px;font-weight:500;
+  color:#e8f0fc;letter-spacing:-.01em;
+}
+.logo em{color:#00e5ff;font-style:normal}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;color:#4a5a6e;transition:color .2s}
+.nav-links a:hover{color:#8a9bb0}
+.nav-cta{
+  color:#00e5ff!important;
+  border:1px solid rgba(0,229,255,0.22);
+  padding:6px 18px;border-radius:3px;
+  font-weight:500!important;
+  transition:all .2s!important;
+}
+.nav-cta:hover{background:rgba(0,229,255,0.06)!important}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:grid;grid-template-columns:55fr 45fr;border-bottom:1px solid var(--bdr);overflow:hidden}
-.hero-l{padding:80px 52px 52px;display:flex;flex-direction:column;justify-content:flex-start}
-.hero-r{border-left:1px solid var(--bdr);background:var(--bg2);display:flex;align-items:center;justify-content:center;padding:80px 48px 52px;overflow:hidden}
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:140px 48px 100px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.hero-inner{max-width:720px}
+.hero-tag{
+  font-size:11px;font-weight:500;
+  color:#00e5ff;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-tag-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#00e5ff;
+  animation:blink 2.5s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{
+  font-family:'Noto Serif',serif;
+  font-size:clamp(48px,5.5vw,74px);
+  font-weight:700;line-height:1.06;
+  color:#e8f0fc;letter-spacing:-.025em;
+  margin-bottom:24px;
+}
+.hero h1 em{font-style:italic;color:#00e5ff}
+.hero-sub{
+  font-size:18px;color:#4a5a6e;
+  line-height:1.8;max-width:500px;
+  margin-bottom:44px;
+}
+.hero-sub strong{color:#7a8b9e;font-weight:400}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:500;
+  color:#00e5ff;
+  border-bottom:1px solid rgba(0,229,255,0.25);
+  padding-bottom:3px;
+  transition:border-color .2s;
+}
+.hero-cta:hover{border-color:rgba(0,229,255,0.7)}
 
-.pill{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--lime);letter-spacing:.12em;text-transform:uppercase;margin-bottom:32px}
-.pill-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:blink 2.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+/* WORK HEADER */
+.work-header{
+  padding:80px 48px 0;
+}
+.section-label{
+  font-size:11px;font-weight:500;
+  color:#2a3a50;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.work-header h2{
+  font-family:'Noto Serif',serif;
+  font-size:clamp(28px,3vw,38px);
+  font-weight:700;color:#e8f0fc;
+  letter-spacing:-.02em;line-height:1.2;
+  max-width:500px;
+}
 
-h1.hero-h{font-family:'Noto Serif',serif;font-size:clamp(44px,5vw,72px);font-weight:700;line-height:1.06;color:var(--bright);margin-bottom:24px;letter-spacing:-.025em}
-h1.hero-h em{font-style:italic;color:var(--cyan)}
-.hero-sub{font-size:17px;color:var(--muted);line-height:1.8;max-width:460px;margin-bottom:36px}
-.hero-sub strong{color:var(--txt);font-weight:400}
-.hero-btns{display:flex;gap:12px}
-.btn-p{font-family:'DM Mono',monospace;display:inline-block;background:var(--cyan);color:#002a30;padding:13px 28px;border-radius:4px;font-size:13px;font-weight:500;letter-spacing:.04em;transition:opacity .2s}
-.btn-p:hover{opacity:.88}
-.btn-s{font-family:'DM Mono',monospace;display:inline-block;color:var(--txt);border:1px solid var(--bdr2);padding:12px 22px;border-radius:4px;font-size:13px;transition:border-color .2s}
-.btn-s:hover{border-color:var(--muted)}
+/* PROJECTS */
+.project{
+  padding:80px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.project.dark{background:#0e1120}
+.project.flip .proj-img{order:-1}
 
-/* Hero phones — fixed absolute positions, fixed sizes, constrained container */
-.phone-stack{position:relative;width:440px;height:500px;flex-shrink:0}
-.ph{position:absolute;border-radius:28px;overflow:hidden;border:2px solid rgba(255,255,255,0.1);box-shadow:0 24px 64px rgba(0,0,0,0.75)}
-.ph img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top}
-.ph1{width:185px;height:358px;left:0;top:20px;z-index:3}
-.ph2{width:168px;height:325px;left:142px;top:52px;z-index:2;opacity:.78}
-.ph3{width:150px;height:292px;left:268px;top:84px;z-index:1;opacity:.48}
+.proj-num{
+  font-size:11px;font-weight:500;
+  color:#243040;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.proj-title{
+  font-family:'Noto Serif',serif;
+  font-size:clamp(26px,2.8vw,34px);
+  font-weight:700;color:#e8f0fc;
+  letter-spacing:-.02em;line-height:1.15;
+  margin-bottom:20px;
+}
+.proj-title em{font-style:italic;color:#00e5ff}
+.proj-body{
+  font-size:15px;color:#4a5a6e;line-height:1.85;
+  margin-bottom:28px;
+}
+.proj-body strong{color:#7a8b9e;font-weight:400}
+.proj-quote{
+  font-family:'Noto Serif',serif;
+  font-size:16px;font-style:italic;
+  color:#7a8b9e;line-height:1.65;
+  border-left:2px solid rgba(0,229,255,0.25);
+  padding-left:20px;
+}
+.proj-quote em{color:#00e5ff;font-style:inherit}
+.proj-quote cite{
+  display:block;
+  font-size:12px;font-style:normal;
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  color:#2a3a50;margin-top:10px;
+  letter-spacing:.02em;
+}
 
-/* ── STATS BAR ── */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg2);border-bottom:1px solid var(--bdr)}
-.st{padding:26px 36px;border-right:1px solid var(--bdr)}
-.st:last-child{border-right:none}
-.st-n{font-family:'Noto Serif',serif;font-size:38px;font-weight:700;line-height:1;margin-bottom:5px;color:var(--bright)}
-.st-n .c{color:var(--cyan)}.st-n .l{color:var(--lime)}
-.st-l{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+/* Image containers */
+.proj-img img{
+  width:100%;border-radius:8px;
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:0 24px 64px rgba(0,0,0,0.55);
+}
+.phone-wrap{
+  display:flex;justify-content:center;align-items:center;
+}
+.phone-frame{
+  width:210px;
+  border-radius:30px;overflow:hidden;
+  border:2px solid rgba(255,255,255,0.08);
+  box-shadow:0 24px 64px rgba(0,0,0,0.55);
+}
+.phone-frame img{display:block;width:100%;height:auto}
 
-/* ── SECTION WRAPPER ── */
-.work-intro{padding:56px 52px 40px;border-bottom:1px solid var(--bdr)}
-.eyebrow{font-family:'DM Mono',monospace;font-size:10px;color:var(--lime);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-.work-intro h2{font-family:'Noto Serif',serif;font-size:clamp(30px,3.5vw,48px);font-weight:700;color:var(--bright);letter-spacing:-.02em;line-height:1.1;margin-bottom:8px}
-.work-intro p{font-size:15px;color:var(--muted);max-width:520px;line-height:1.7}
+/* ABOUT */
+.about{
+  padding:80px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.about-inner{max-width:600px}
+.about h2{
+  font-family:'Noto Serif',serif;
+  font-size:clamp(28px,3vw,36px);
+  font-weight:700;color:#e8f0fc;
+  letter-spacing:-.02em;
+  margin-bottom:28px;
+}
+.about p{
+  font-size:16px;color:#4a5a6e;line-height:1.9;
+}
+.about p+p{margin-top:16px}
+.about strong{color:#7a8b9e;font-weight:400}
+.stack-row{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:36px;
+}
+.stack-tag{
+  font-size:12px;font-weight:500;
+  color:#2a3a50;
+  border:1px solid rgba(255,255,255,0.05);
+  padding:5px 12px;border-radius:3px;
+}
 
-/* ── PROJECT ── */
-.proj{border-bottom:1px solid var(--bdr)}
-.proj.alt{background:var(--bg2)}
-.proj-top{padding:40px 52px 24px;display:flex;align-items:baseline;gap:20px;border-bottom:1px solid var(--bdr)}
-.proj-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
-.proj-cat{font-family:'DM Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
+/* CONTACT */
+.contact{
+  padding:100px 48px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.contact::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 100%, rgba(0,229,255,0.04) 0%, transparent 70%);
+  pointer-events:none;
+}
+.contact h2{
+  font-family:'Noto Serif',serif;
+  font-size:clamp(44px,6vw,78px);
+  font-weight:700;color:#e8f0fc;
+  letter-spacing:-.03em;line-height:1.05;
+  margin-bottom:20px;
+  position:relative;z-index:1;
+}
+.contact h2 em{font-style:italic;color:#00e5ff}
+.contact-sub{
+  font-size:17px;color:#4a5a6e;
+  max-width:440px;margin:0 auto 44px;
+  line-height:1.75;
+  position:relative;z-index:1;
+}
+.email-link{
+  font-size:20px;font-weight:500;
+  color:#00e5ff;
+  border-bottom:1px solid rgba(0,229,255,0.25);
+  padding-bottom:3px;
+  display:inline-block;
+  transition:border-color .2s;
+  position:relative;z-index:1;
+}
+.email-link:hover{border-color:rgba(0,229,255,0.7)}
 
-/* Two-column layout: left=visual, right=copy */
-.proj-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.proj-vis{border-right:1px solid var(--bdr);padding:32px 40px}
-.proj-copy{padding:32px 40px}
+/* FOOTER */
+footer{
+  padding:22px 48px;
+  border-top:1px solid rgba(255,255,255,0.05);
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer span,footer a{
+  font-size:12px;color:#243040;
+  letter-spacing:.03em;
+}
+footer a:hover{color:#3a4a5e}
+.footer-links{display:flex;gap:24px}
 
-/* ── IMAGE CONTAINERS — ALL FIXED HEIGHT ── */
-/* Web app screenshots (landscape, ~1700x520 or ~1664x871) */
-.img-web{width:100%;height:360px;border-radius:8px;overflow:hidden;border:1px solid var(--bdr2);box-shadow:0 8px 32px rgba(0,0,0,0.5)}
-.img-web img{width:100%;height:100%;object-fit:cover;object-position:top}
-
-/* Phone screenshots side by side — fixed 320px tall */
-.phones-row{display:flex;gap:14px;height:320px}
-.ph-item{flex:1;border-radius:20px;overflow:hidden;border:2px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
-.ph-item img{width:100%;height:100%;object-fit:cover;object-position:top}
-/* Stagger alternating */
-.phones-row .ph-item:nth-child(2){margin-top:20px;height:300px}
-.phones-row .ph-item:nth-child(3){margin-top:40px;height:280px}
-
-/* Prediction: one phone + one landscape + accuracy */
-.pred-layout{display:flex;flex-direction:column;gap:16px}
-.pred-phones{display:flex;gap:14px;height:280px}
-.pred-ph{flex:1;border-radius:18px;overflow:hidden;border:2px solid rgba(255,255,255,0.08);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
-.pred-ph img{width:100%;height:100%;object-fit:cover;object-position:top}
-.pred-ph:nth-child(2){margin-top:16px;height:260px}
-
-/* Accuracy box */
-.acc-box{background:rgba(0,229,255,0.06);border:1px solid var(--cyan-bdr);border-radius:8px;padding:20px 24px}
-.acc-cap{font-family:'DM Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.acc-nums{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
-.acc-pred{font-family:'Noto Serif',serif;font-size:34px;font-weight:700;color:rgba(255,255,255,.35);line-height:1}
-.acc-arr{font-size:16px;color:var(--muted)}
-.acc-real{font-family:'Noto Serif',serif;font-size:34px;font-weight:700;color:var(--cyan);line-height:1}
-.acc-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;background:var(--cyan);color:#002a30;padding:3px 10px;border-radius:20px;letter-spacing:.04em;margin-bottom:10px}
-.acc-det{font-size:12px;color:var(--muted);line-height:1.6}
-.acc-det strong{color:var(--txt);font-weight:400}
-
-/* ── COPY ELEMENTS ── */
-.proj-copy h2{font-family:'Noto Serif',serif;font-size:clamp(26px,2.4vw,36px);font-weight:700;color:var(--bright);letter-spacing:-.02em;line-height:1.1;margin-bottom:20px}
-.proj-copy h2 em{font-style:italic;color:var(--cyan)}
-.proj-copy h2 em.lime{color:var(--lime)}
-
-.ps{border-radius:6px;padding:16px 18px;margin-bottom:10px}
-.ps.prob{background:rgba(255,85,85,0.05);border:1px solid rgba(255,85,85,0.15)}
-.ps.sol{background:var(--cyan-dim);border:1px solid var(--cyan-bdr)}
-.ps-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
-.ps.prob .ps-lbl{color:var(--red)}.ps.sol .ps-lbl{color:var(--cyan)}
-.ps p{font-size:13px;color:var(--txt);line-height:1.7}
-
-.quote{border-left:2px solid var(--amber);background:rgba(245,158,11,0.05);border-radius:0 6px 6px 0;padding:14px 18px;margin-top:10px}
-.q-text{font-family:'Noto Serif',serif;font-size:15px;font-style:italic;color:var(--bright);line-height:1.5;margin-bottom:8px}
-.q-text .hl{color:var(--amber)}
-.q-attr{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.03em}
-.lime-quote{border-left-color:var(--lime);background:rgba(184,240,0,0.04)}
-
-.big-stats{display:flex;gap:28px;margin:16px 0}
-.bst .n{font-family:'Noto Serif',serif;font-size:44px;font-weight:700;line-height:1;margin-bottom:3px}
-.bst .l{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-
-.data-tbl{border:1px solid var(--bdr);border-radius:6px;overflow:hidden;margin:10px 0}
-.dr{display:flex;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--bdr);font-size:12px}
-.dr:last-child{border-bottom:none}
-.dk{color:var(--muted)}.dv{color:var(--bright);text-align:right}
-.dv.c{color:var(--cyan)}
-
-.sponsor-box{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-radius:6px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-top:10px}
-.sp-lbl{font-family:'DM Mono',monospace;font-size:9px;color:rgba(245,158,11,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
-.sp-name{font-family:'Noto Serif',serif;font-size:18px;font-weight:700;color:var(--amber)}
-.sp-r{font-family:'DM Mono',monospace;font-size:11px;color:rgba(245,158,11,.4);text-align:right;line-height:1.5}
-
-.pipe{display:flex;align-items:center;margin-top:12px}
-.pb{flex:1;background:var(--cyan-dim);border:1px solid var(--cyan-bdr);padding:9px 6px;border-radius:4px;text-align:center}
-.pb-k{font-family:'DM Mono',monospace;font-size:8px;color:var(--cyan);letter-spacing:.09em;text-transform:uppercase;margin-bottom:2px}
-.pb-v{font-size:11px;color:var(--txt)}.pa{font-size:11px;color:var(--dim);padding:0 3px;flex-shrink:0}
-
-.mods{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:6px;overflow:hidden;margin-top:10px}
-.mod{background:var(--cyan-dim);padding:9px 12px;font-size:12px;color:var(--txt)}
-
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
-.tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--bdr);padding:4px 10px;border-radius:20px;letter-spacing:.04em}
-
-/* ── ABOUT ── */
-.about-sec{padding:60px 52px;background:var(--bg2);border-bottom:1px solid var(--bdr)}
-.about-sec h2{font-family:'Noto Serif',serif;font-size:clamp(28px,3vw,44px);font-weight:700;color:var(--bright);letter-spacing:-.02em;margin-bottom:32px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px}
-.about-txt{font-size:15px;color:var(--muted);line-height:1.85}
-.about-txt p+p{margin-top:14px}
-.about-txt strong{color:var(--txt);font-weight:400}
-.cap-tbl{border:1px solid var(--bdr);border-radius:6px;overflow:hidden}
-.cr{display:flex;padding:11px 16px;border-bottom:1px solid var(--bdr);font-size:13px}
-.cr:last-child{border-bottom:none}
-.ck{color:var(--muted);width:90px;flex-shrink:0}.cv{color:var(--txt)}
-
-/* ── CONTACT ── */
-.contact-sec{padding:88px 52px;text-align:center;position:relative;overflow:hidden}
-.contact-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(0,229,255,0.04),transparent 70%);pointer-events:none}
-.contact-sec h2{font-family:'Noto Serif',serif;font-size:clamp(40px,6.5vw,80px);font-weight:700;color:var(--bright);line-height:1;letter-spacing:-.03em;margin-bottom:18px;position:relative}
-.contact-sec h2 em{font-style:italic;color:var(--cyan)}
-.contact-sub{font-size:17px;color:var(--muted);max-width:440px;margin:0 auto 32px;line-height:1.7;position:relative}
-.contact-sub strong{color:var(--txt);font-weight:400}
-.email-link{font-family:'DM Mono',monospace;font-size:18px;color:var(--cyan);border-bottom:1px solid var(--cyan-bdr);padding-bottom:3px;display:inline-block;position:relative;transition:border-color .2s}
-.email-link:hover{border-color:var(--cyan)}
-
-footer{padding:18px 52px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
-footer span,footer a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em}
-footer a:hover{color:var(--txt)}
-.flinks{display:flex;gap:24px}
-
-@media(max-width:900px){
+/* RESPONSIVE */
+@media(max-width:860px){
   nav{padding:0 20px}
-  .hero{grid-template-columns:1fr}
-  .hero-l{padding:80px 24px 44px}
-  .hero-r{display:none}
-  .stats{grid-template-columns:1fr 1fr}
-  .st:nth-child(2){border-right:none}
-  .st:nth-child(3){border-top:1px solid var(--bdr)}
-  .st:nth-child(4){border-top:1px solid var(--bdr);border-right:none}
-  .work-intro,.proj-top{padding-left:24px;padding-right:24px}
-  .proj-inner{grid-template-columns:1fr}
-  .proj-vis{border-right:none;border-bottom:1px solid var(--bdr);padding:24px}
-  .proj-copy{padding:24px}
-  .about-grid{grid-template-columns:1fr;gap:28px}
-  .about-sec,.contact-sec{padding:48px 24px}
-  footer{padding:14px 24px;flex-direction:column;gap:8px}
+  .hero{padding:110px 24px 80px}
+  .work-header{padding:60px 24px 0}
+  .project{
+    grid-template-columns:1fr;
+    gap:40px;padding:60px 24px;
+  }
+  .project.flip .proj-img{order:0}
+  .phone-wrap{justify-content:flex-start}
+  .about{padding:60px 24px}
+  .contact{padding:80px 24px}
+  footer{padding:18px 24px;flex-direction:column;gap:10px;text-align:center}
 }
 </style>
 </head>
@@ -210,205 +278,122 @@ footer a:hover{color:var(--txt)}
 
 <nav>
   <div class="logo">app<em>.</em>loading</div>
-  <div class="nav-r">
+  <div class="nav-links">
     <a href="#work">Work</a>
     <a href="#about">About</a>
     <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-l">
-    <div class="pill"><span class="pill-dot"></span>Available for new builds — Cape Town, ZA</div>
-    <h1 class="hero-h">I build apps that ship, scale and <em>actually work.</em></h1>
-    <p class="hero-sub">Solo builder based in Cape Town. <strong>Mobile apps, web platforms and data tools</strong> — built from scratch, without agency overhead, and still working six months after handoff.</p>
-    <div class="hero-btns">
-      <a href="#work" class="btn-p">See the work</a>
-      <a href="mailto:dave@apploading.co" class="btn-s">dave@apploading.co</a>
-    </div>
-  </div>
-  <div class="hero-r">
-    <div class="phone-stack">
-      <div class="ph ph1"><img src="swim-home.jpg" alt="SwimLoading home"></div>
-      <div class="ph ph2"><img src="swim-swims.jpg" alt="SwimLoading swims"></div>
-      <div class="ph ph3"><img src="swim-trends.jpg" alt="SwimLoading trends"></div>
-    </div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Available for new builds — Cape Town, ZA</div>
+    <h1>I build apps that ship,<br>scale and <em>actually work.</em></h1>
+    <p class="hero-sub">
+      Solo builder based in Cape Town. <strong>Mobile apps, web platforms and data tools</strong> — built from scratch, without agency overhead.
+    </p>
+    <a href="#work" class="hero-cta">See the work →</a>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="st"><div class="st-n"><span class="l cnt" data-t="450">0</span>+</div><div class="st-l">Users in 4 weeks</div></div>
-  <div class="st"><div class="st-n"><span class="c cnt" data-t="200">0</span>k</div><div class="st-l">Records / day</div></div>
-  <div class="st"><div class="st-n" style="font-size:26px;padding-top:7px">90 sec</div><div class="st-l">Ocean prediction error</div></div>
-  <div class="st"><div class="st-n"><span class="cnt" data-t="4">0</span></div><div class="st-l">Apps in production</div></div>
+<div id="work" class="work-header">
+  <div class="section-label">Proof of work</div>
+  <h2>Three things I've built.<br>All of them real.</h2>
 </div>
 
-<!-- WORK INTRO -->
-<div id="work" class="work-intro">
-  <div class="eyebrow">Proof of work</div>
-  <h2>Four things I've built. All of them real.</h2>
-  <p>Each project built solo — from brief to production — with real users, real data and real consequences if it breaks.</p>
+<!-- PROJECT 1 -->
+<div class="project dark">
+  <div class="proj-info">
+    <div class="proj-num">01 — Prediction engine</div>
+    <h3 class="proj-title">Predicted a 15km ocean swim<br>to within <em>90 seconds.</em></h3>
+    <p class="proj-body">
+      Open water crossings in Cape Town involve cold Atlantic water, tidal streams, wind-driven currents and pace degradation over distance. I built a multi-variable prediction engine from scratch — integrating live tidal feeds, marine weather data, cold water pace penalty curves and GPS-calibrated feed-stop modelling. <strong>No vendor. No off-the-shelf model.</strong>
+    </p>
+    <blockquote class="proj-quote">
+      <em>"5:23:30 — your app in 1m:30sec out. Bloody unbelievable. You are a GURU of note."</em>
+      <cite>Open water swimmer — after completing her 15km Robben Island double crossing</cite>
+    </blockquote>
+  </div>
+  <div class="proj-img">
+    <img src="swim-predict.jpg" alt="Ocean crossing prediction interface">
+  </div>
 </div>
 
-<!-- 01 PREDICTION ENGINE -->
-<div class="proj alt">
-  <div class="proj-top"><span class="proj-num">01</span><span class="proj-cat">Prediction engine</span></div>
-  <div class="proj-inner">
-    <div class="proj-vis">
-      <div class="pred-layout">
-        <div class="pred-phones">
-          <div class="pred-ph"><img src="swim-predict.jpg" alt="Crossing prediction"></div>
-          <div class="pred-ph"><img src="swim-calc.jpg" alt="Double crossing calculator"></div>
-        </div>
-        <div class="acc-box">
-          <div class="acc-cap">Robben Island double · 15km · cold water · tides · wind</div>
-          <div class="acc-nums">
-            <span class="acc-pred">5:20</span>
-            <span class="acc-arr">→</span>
-            <span class="acc-real">5:23:30</span>
-          </div>
-          <div class="acc-badge">90 sec off</div>
-          <div class="acc-det">Tidal currents · cold water pace penalty · feed stop intervals · <strong>calibrated on elite athlete GPS data from real crossings</strong></div>
-        </div>
-      </div>
-    </div>
-    <div class="proj-copy">
-      <h2>I predicted a 15km ocean swim to within <em>90 seconds.</em></h2>
-      <div class="ps prob"><div class="ps-lbl">The challenge</div><p>Open water crossings in Cape Town involve cold Atlantic water (12–16°C), tidal streams, wind-driven currents and significant pace degradation over distance. No existing tool combined all these variables for personalised predictions.</p></div>
-      <div class="ps sol"><div class="ps-lbl">What I built</div><p>A multi-variable prediction engine from scratch — integrating live tidal feeds, Open-Meteo marine data, cold water pace penalty curves and GPS-calibrated feed-stop modelling. No vendor. No off-the-shelf model.</p></div>
-      <div class="quote">
-        <p class="q-text"><span class="hl">"5:23:30 — your app in 1m:30sec out.</span> Bloody unbelievable. You are a GURU of note."</p>
-        <p class="q-attr">Open water swimmer — immediately after completing her 15km Robben Island double crossing</p>
-      </div>
+<!-- PROJECT 2 -->
+<div class="project flip">
+  <div class="proj-info">
+    <div class="proj-num">02 — Consumer mobile app</div>
+    <h3 class="proj-title">Zero to <em>450 users</em><br>in four weeks.</h3>
+    <p class="proj-body">
+      South Africa's open water swimming community had no platform for real-time conditions, group coordination or community tracking — just WhatsApp groups. I built SwimLoading: a React Native app with live conditions, GPS swim logging, leaderboards and race organisation. <strong>Self-funded. Zero marketing. Built and shipped solo.</strong> Four regions in eight weeks, with a Maurten sponsorship following.
+    </p>
+    <blockquote class="proj-quote">
+      <em>"Dave Welensky verifying my day conditions with an unbelievable app — check it out swimmers."</em>
+      <cite>Yolanda Carstens — open water swimmer, SA community</cite>
+    </blockquote>
+  </div>
+  <div class="proj-img phone-wrap">
+    <div class="phone-frame">
+      <img src="swim-home.jpg" alt="SwimLoading app">
     </div>
   </div>
 </div>
 
-<!-- 02 SWIMLOADING -->
-<div class="proj">
-  <div class="proj-top"><span class="proj-num">02</span><span class="proj-cat">Consumer mobile app</span></div>
-  <div class="proj-inner">
-    <div class="proj-vis">
-      <div class="phones-row">
-        <div class="ph-item"><img src="swim-home.jpg" alt="SwimLoading home"></div>
-        <div class="ph-item"><img src="swim-log.jpg" alt="SwimLoading log"></div>
-        <div class="ph-item"><img src="swim-swims.jpg" alt="SwimLoading swims"></div>
-      </div>
-    </div>
-    <div class="proj-copy">
-      <h2>Zero to <em class="lime">450 users</em> in under four weeks.</h2>
-      <div class="ps prob"><div class="ps-lbl">The challenge</div><p>South Africa's open water swimming community had no platform for real-time conditions, group coordination or community tracking. Just WhatsApp groups and word of mouth.</p></div>
-      <div class="ps sol"><div class="ps-lbl">What I built</div><p>SwimLoading — a React Native app with live conditions, GPS swim logging, group coordination, leaderboards, safety screens and race organisation. Self-funded, zero marketing. Built and shipped solo.</p></div>
-      <div class="big-stats">
-        <div class="bst"><div class="n" style="color:var(--lime)">450+</div><div class="l">Active users</div></div>
-        <div class="bst"><div class="n" style="color:var(--lime)">R0</div><div class="l">Marketing spend</div></div>
-      </div>
-      <div class="quote lime-quote">
-        <p class="q-text" style="color:var(--bright)">"<span style="color:var(--lime)">Dave Welensky verifying my day conditions with an unbelievable app</span> — check it out swimmers."</p>
-        <p class="q-attr">Yolanda Carstens — open water swimmer, posting about SwimLoading to the SA community</p>
-      </div>
-      <div class="sponsor-box">
-        <div><div class="sp-lbl">Official sponsor</div><div class="sp-name">Maurten</div></div>
-        <div class="sp-r">9-month partnership<br>Apr–Dec 2026</div>
-      </div>
-    </div>
+<!-- PROJECT 3 -->
+<div class="project dark">
+  <div class="proj-info">
+    <div class="proj-num">03 — Enterprise data platform</div>
+    <h3 class="proj-title">171,000 data failures<br>caught before <em>go-live.</em></h3>
+    <p class="proj-body">
+      A large South African retailer was migrating to SAP S/4HANA with 200,000 master data records across 993 columns. I built a proprietary data quality engine from scratch — <strong>no vendor, no off-the-shelf tooling</strong> — running daily in production, surfacing every failure and routing it to the right business owner before it reached the new system.
+    </p>
   </div>
-</div>
-
-<!-- 03 DQ PLATFORM -->
-<div class="proj alt">
-  <div class="proj-top"><span class="proj-num">03</span><span class="proj-cat">Enterprise data platform</span></div>
-  <div class="proj-inner">
-    <div class="proj-vis">
-      <div class="img-web"><img src="dq-app.jpg" alt="Data quality platform"></div>
-    </div>
-    <div class="proj-copy">
-      <h2>171,000 data failures caught before <em>go-live.</em></h2>
-      <div class="ps prob"><div class="ps-lbl">The challenge</div><p>A large South African retailer was migrating to SAP S/4HANA with 200,000 master data records across 993 columns. Data quality failures on go-live day would mean costly fixes under maximum pressure.</p></div>
-      <div class="ps sol"><div class="ps-lbl">What I built</div><p>A proprietary data quality engine from scratch — no vendor, no off-the-shelf tooling. Runs daily in production, surfaces every failure and assigns it to a business owner before it reaches the new system.</p></div>
-      <div class="big-stats">
-        <div class="bst"><div class="n" style="color:var(--cyan)">200k</div><div class="l">Records / day</div></div>
-        <div class="bst"><div class="n" style="color:var(--red)">171k+</div><div class="l">Issues caught</div></div>
-      </div>
-      <div class="eyebrow" style="margin-bottom:6px">Data pipeline</div>
-      <div class="pipe">
-        <div class="pb"><div class="pb-k">Source</div><div class="pb-v">ECC extract</div></div><div class="pa">→</div>
-        <div class="pb"><div class="pb-k">Transform</div><div class="pb-v">KNIME</div></div><div class="pa">→</div>
-        <div class="pb"><div class="pb-k">Quality</div><div class="pb-v">DQ engine</div></div><div class="pa">→</div>
-        <div class="pb"><div class="pb-k">Target</div><div class="pb-v">SAP Cockpit</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 04 OPS HUB -->
-<div class="proj">
-  <div class="proj-top"><span class="proj-num">04</span><span class="proj-cat">Business operations platform</span></div>
-  <div class="proj-inner">
-    <div class="proj-vis">
-      <div class="img-web"><img src="ops-hub.jpg" alt="Operations hub dashboard"></div>
-    </div>
-    <div class="proj-copy">
-      <h2>One platform. Every moving part <em>in one place.</em></h2>
-      <div class="ps prob"><div class="ps-lbl">The challenge</div><p>A professional services firm was running projects, timesheets, leave, expenses, invoicing and team capacity across disconnected tools. No single view of utilisation, allocation or profitability. Decisions based on stale spreadsheets.</p></div>
-      <div class="ps sol"><div class="ps-lbl">What I built</div><p>A centralised operations hub — projects, consultant allocation, utilisation tracking, timesheets, leave, expenses, invoicing and a live management dashboard. Built from scratch, deployed and in production daily.</p></div>
-      <div class="big-stats">
-        <div class="bst"><div class="n" style="color:var(--cyan)">76%</div><div class="l">Org utilisation tracked</div></div>
-        <div class="bst"><div class="n" style="color:var(--cyan)">Live</div><div class="l">Daily production</div></div>
-      </div>
-      <div class="eyebrow" style="margin-bottom:6px">Modules built</div>
-      <div class="mods">
-        <div class="mod">Project management</div><div class="mod">Consultant allocation</div>
-        <div class="mod">Utilisation dashboard</div><div class="mod">Timesheet &amp; approval</div>
-        <div class="mod">Leave management</div><div class="mod">Expense tracking</div>
-        <div class="mod">Invoicing</div><div class="mod">Skills &amp; training registry</div>
-      </div>
-    </div>
+  <div class="proj-img">
+    <img src="dq-app.jpg" alt="Data quality platform">
   </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="about-sec">
-  <div class="eyebrow">About</div>
-  <h2>One builder. The whole stack.</h2>
-  <div class="about-grid">
-    <div class="about-txt">
-      <p>I'm a solo builder — <strong>not an agency</strong> — which means you work with the person who makes every technical decision, writes the code and is still reachable six months after you've gone live.</p>
-      <p>Background spans <strong>enterprise SAP data engineering at scale</strong> — lead on Africa's largest SAP Retail rollout — to consumer mobile apps with real user traction built solo. I know what it takes to get software from idea to production and keep it there.</p>
-      <p>Based in <strong>Cape Town.</strong> Available for contract builds from early brief through to deployed and stable.</p>
-    </div>
-    <div class="cap-tbl">
-      <div class="cr"><span class="ck">Mobile</span><span class="cv">React Native — iOS &amp; Android</span></div>
-      <div class="cr"><span class="ck">Web</span><span class="cv">React, Next.js, Node.js</span></div>
-      <div class="cr"><span class="ck">Data</span><span class="cv">Data quality, ETL, integrations</span></div>
-      <div class="cr"><span class="ck">Enterprise</span><span class="cv">SAP S/4HANA, data migration, ECC</span></div>
-      <div class="cr"><span class="ck">Engagement</span><span class="cv">Contract — brief to deployment</span></div>
-      <div class="cr"><span class="ck">Location</span><span class="cv">Cape Town, ZA — remote-capable</span></div>
+<section id="about" class="about">
+  <div class="about-inner">
+    <div class="section-label">About</div>
+    <h2>One builder.<br>The whole stack.</h2>
+    <p>
+      I'm a solo builder — <strong>not an agency</strong> — which means you work with the person who makes every technical decision, writes the code and is still reachable six months after you've gone live.
+    </p>
+    <p>
+      My background spans <strong>enterprise SAP data engineering at scale</strong> — lead on Africa's largest SAP Retail rollout — to consumer mobile apps with real user traction built and grown solo. I know what it takes to get software from idea to production and keep it there.
+    </p>
+    <p>
+      Based in <strong>Cape Town.</strong> Available for contract builds from early brief through to deployed, stable and working.
+    </p>
+    <div class="stack-row">
+      <span class="stack-tag">React Native</span>
+      <span class="stack-tag">React / Next.js</span>
+      <span class="stack-tag">Node.js</span>
+      <span class="stack-tag">Data quality / ETL</span>
+      <span class="stack-tag">SAP S/4HANA</span>
+      <span class="stack-tag">Data migration</span>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-sec">
+<section id="contact" class="contact">
   <h2>Got something<br>that needs<br><em>building?</em></h2>
-  <p class="contact-sub">App that needs building, a system that needs untangling, or a data problem that needs solving. <strong>I work on a contract basis</strong> — from brief to production-ready.</p>
+  <p class="contact-sub">
+    App that needs building, a system that needs untangling, or a data problem that needs solving. I work on a contract basis — from brief to production-ready.
+  </p>
   <a href="mailto:dave@apploading.co" class="email-link">dave@apploading.co</a>
 </section>
 
 <footer>
   <span>apploading.co — Cape Town, ZA — © 2026</span>
-  <div class="flinks">
+  <div class="footer-links">
     <a href="https://swimloading.com" target="_blank" rel="noopener">swimloading.com</a>
     <a href="mailto:dave@apploading.co">dave@apploading.co</a>
   </div>
 </footer>
 
-<script>
-function animC(el,t,d){const s=performance.now();(function f(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t);if(p<1)requestAnimationFrame(f)})(performance.now())}
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.cnt').forEach(el=>animC(el,+el.dataset.t,1400));io.unobserve(x.target)}})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.stats').forEach(el=>io.observe(el));
-</script>
 </body>
 </html>
